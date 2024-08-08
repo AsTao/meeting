@@ -12,7 +12,7 @@ func InitConfig() {
 	viper.AddConfigPath("./conf/")
 	err := viper.ReadInConfig()
 	if err != nil {
-		panic(" load config error" + err.Error())
+		panic(fmt.Sprintf(" load config error" + err.Error()))
 	}
 
 	fmt.Println(viper.GetString("server.port"))
