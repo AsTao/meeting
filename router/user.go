@@ -13,5 +13,21 @@ func InitUserRoutes() {
 				"msg": "Login Success",
 			})
 		})
+
+		rgAuthUser := rgAuth.Group("user")
+		rgAuthUser.GET("", func(ctx *gin.Context) {
+			ctx.AbortWithStatusJSON(http.StatusOK, gin.H{
+				"data": []map[string]any{
+					{"id": 1, "name": "aa"},
+					{"id": 2, "name": "bb"},
+				},
+			})
+		})
+
+		rgAuthUser.GET("/:id", func(ctx *gin.Context) {
+			ctx.AbortWithStatusJSON(http.StatusOK, gin.H{
+				"data": map[string]any{"id": 2, "name": "bb"},
+			})
+		})
 	})
 }

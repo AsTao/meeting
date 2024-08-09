@@ -10,10 +10,14 @@ func InitConfig() {
 	viper.SetConfigName("settings")
 	viper.SetConfigType("yml")
 	viper.AddConfigPath("./conf/")
-	err := viper.ReadInConfig()
-	if err != nil {
-		panic(fmt.Sprintf(" load config error" + err.Error()))
+
+	if err := viper.ReadInConfig(); err != nil {
+		fmt.Printf("Error reading config file, %s", err)
 	}
 
-	fmt.Println(viper.GetString("server.port"))
+	port := viper.GetString("server.port")
+	if port == "" {
+		fmt.Printf("Server port not specified in the configuration file")
+	}
+
 }
