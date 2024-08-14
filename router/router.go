@@ -10,6 +10,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
+	swaggerfiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 type IFnRegistRoute = func(rgPublic *gin.RouterGroup, rgAuth *gin.RouterGroup)
@@ -57,6 +59,9 @@ func InitRouter() {
 	for _, fnRegistRoute := range gfnRoutes {
 		fnRegistRoute(rgPublic, rgAuth)
 	}
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))
+
 	port := viper.GetString("server.port")
 
 	srv := &http.Server{
