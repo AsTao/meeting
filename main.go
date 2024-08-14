@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/AsTao/meeting.git/cmd"
+	"github.com/AsTao/meeting/cmd"
 )
 
 func main() {

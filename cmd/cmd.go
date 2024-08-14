@@ -3,8 +3,8 @@ package cmd
 import (
 	"fmt"
 
-	"github.com/AsTao/meeting.git/conf"
-	"github.com/AsTao/meeting.git/router"
+	"github.com/AsTao/meeting/conf"
+	"github.com/AsTao/meeting/router"
 )
 
 func Start() {
