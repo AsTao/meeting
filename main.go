@@ -4,9 +4,9 @@ import (
 	"github.com/AsTao/meeting/cmd"
 )
 
-// @title Go-web tao
+// @title 会议室预定 tao
 // @version 0.0.1
-// @description 会议预定
+// @description swagger api
 func main() {
 
 	defer cmd.Clearn()

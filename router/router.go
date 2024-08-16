@@ -8,7 +8,8 @@ import (
 	"syscall"
 	"time"
 
-	docs "github.com/AsTao/meeting/docs"
+	"github.com/AsTao/meeting/api"
+	"github.com/AsTao/meeting/docs"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	swaggerfiles "github.com/swaggo/files"
@@ -29,25 +30,19 @@ func RegistRoute(fn IFnRegistRoute) {
 	gfnRoutes = append(gfnRoutes, fn)
 }
 
-func InitBasePlatformRoutes() {
-	InitUserRoutes()
-}
-
 func InitRouter() {
 
 	ctx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
 	defer stop()
 
 	r := gin.Default()
+	r.StaticFile("/favicon.ico", "./static/favicon.ico")
 	docs.SwaggerInfo.BasePath = "/api/v1"
 
-	rgPublic := r.Group("api/v1/public")
-	rgAuth := r.Group("api/v1")
-
-	InitBasePlatformRoutes()
-
-	for _, fnRegistRoute := range gfnRoutes {
-		fnRegistRoute(rgPublic, rgAuth)
+	v1 := r.Group("/api/v1")
+	{
+		v1.GET("/helloworld", api.Helloworld)
+		v1.POST("/user/login", api.Login)
 	}
 
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerfiles.Handler))

@@ -1,7 +1,52 @@
 info:
   contact: {}
-  description: 会议预定
-  title: Go-web tao
+  description: swagger api
+  title: 会议室预定 tao
   version: 0.0.1
-paths: {}
+paths:
+  /helloworld:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: helloword
+      tags:
+      - 测试
+  /user/login:
+    post:
+      consumes:
+      - application/json
+      description: 用户登录详细描述
+      parameters:
+      - description: 用户名
+        in: formData
+        name: name
+        required: true
+        type: string
+      - description: 密码
+        in: formData
+        name: password
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: ok" "登录成功
+          schema:
+            type: string
+        "400":
+          description: 登录失败
+          schema:
+            type: string
+      summary: 用户登录
+      tags:
+      - 用户
 swagger: "2.0"
