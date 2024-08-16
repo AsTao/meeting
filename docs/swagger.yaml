@@ -1,4 +1,7 @@
 info:
   contact: {}
+  description: 会议预定
+  title: Go-web tao
+  version: 0.0.1
 paths: {}
 swagger: "2.0"

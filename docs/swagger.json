@@ -1,7 +1,10 @@
 {
     "swagger": "2.0",
     "info": {
-        "contact": {}
+        "description": "会议预定",
+        "title": "Go-web tao",
+        "contact": {},
+        "version": "0.0.1"
     },
     "paths": {}
 }

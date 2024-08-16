@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	_ "github.com/AsTao/meeting/docs"
+	docs "github.com/AsTao/meeting/docs"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	swaggerfiles "github.com/swaggo/files"
@@ -39,18 +39,7 @@ func InitRouter() {
 	defer stop()
 
 	r := gin.Default()
-	// r.Use(cors.New(cors.Config{
-	// 	AllowOrigins:     []string{"http://localhost:6666"}, // 允许的来源
-	// 	AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
-	// 	AllowHeaders:     []string{"Origin", "Content-Type", "Accept", "Authorization"},
-	// 	ExposeHeaders:    []string{"Content-Length"},
-	// 	AllowCredentials: true,
-	// 	MaxAge:           12 * time.Hour,
-	// }))
-
-	r.GET("/", func(c *gin.Context) {
-		c.String(200, "Hello, Colg!")
-	})
+	docs.SwaggerInfo.BasePath = "/api/v1"
 
 	rgPublic := r.Group("api/v1/public")
 	rgAuth := r.Group("api/v1")
@@ -70,8 +59,6 @@ func InitRouter() {
 		Handler: r,
 	}
 
-	// Initializing the server in a goroutine so that
-	// it won't block the graceful shutdown handling below
 	go func() {
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 			fmt.Printf("start server error: %s \n", err.Error())
