@@ -1,0 +1,6 @@
+{"level":"ERROR","time":"2024-08-19 06:47:52","msg":"Error 1045 (28000): Access denied for user ''@'localhost' (using password: NO)"}
+{"level":"ERROR","time":"2024-08-19 06:49:26","msg":"Error 1045 (28000): Access denied for user ''@'localhost' (using password: NO)"}
+{"level":"ERROR","time":"2024-08-19 06:54:41","msg":"Error 1045 (28000): Access denied for user ''@'localhost' (using password: NO)"}
+{"level":"ERROR","time":"2024-08-19 07:03:05","msg":"Error 1045 (28000): Access denied for user ''@'localhost' (using password: NO)"}
+{"level":"ERROR","time":"2024-08-19 07:04:09","msg":"Error 1045 (28000): Access denied for user ''@'localhost' (using password: NO)"}
+{"level":"INFO","time":"2024-08-19 07:04:49","msg":" Start Listen 4000"}

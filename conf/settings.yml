@@ -1,3 +1,17 @@
+mode:
+  develop: true
+
 server:
   port: 4000
+
+db:
+  dsn: "root:abc7777777@tcp(127.0.0.1:3306)/meeting?charset=utf8mb4&parseTime=True&loc=Local"
+  maxIdleConns: 100 #最多空闲连结数
+  maxOpenConns: 100 #最多打开连接数
+
+log:
+    MaxSize: 1  # 日志最大尺寸（m）超限额后自动分割
+    MaxBackups: 10 # 保留日志文件最大个数
+    MaxAge: 90 # 保留日志文件最 天数
+
 

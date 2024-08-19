@@ -10,6 +10,7 @@ import (
 
 	"github.com/AsTao/meeting/api"
 	"github.com/AsTao/meeting/docs"
+	"github.com/AsTao/meeting/global"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	swaggerfiles "github.com/swaggo/files"
@@ -55,8 +56,9 @@ func InitRouter() {
 	}
 
 	go func() {
+		global.Logger.Info(fmt.Sprintf(" Start Listen %s", port))
 		if err := srv.ListenAndServe(); err != nil && err != http.ErrServerClosed {
-			fmt.Printf("start server error: %s \n", err.Error())
+			global.Logger.Error(fmt.Sprintf("start server error: %s \n", err.Error()))
 		}
 	}()
 
@@ -65,12 +67,12 @@ func InitRouter() {
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 	if err := srv.Shutdown(ctx); err != nil {
-		fmt.Println("Server forced to shutdown: ", err)
+		global.Logger.Error(fmt.Sprintf("Server forced to shutdown: %s", err.Error()))
 		return
 	}
 
 	if err := r.Run(":" + port); err != nil {
-		fmt.Printf("Error starting server: %s", err)
+		global.Logger.Error(fmt.Sprintf("Error starting server: %s", err.Error()))
 	}
 
 }
